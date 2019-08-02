@@ -168,4 +168,16 @@
     </select>
 
 
+    <select id="selectQuestionByUserName" parameterType="string" resultType="string">
+        select question
+        from mmall_user
+        where username = #{username,jdbcType=VARCHAR}
+    </select>
+    <select id="checkAnswer" parameterType="map" resultType="int">
+        select count (1)
+        from mmall_user
+        where username = #{username,jdbcType=VARCHAR} and question = #{question,jdbcType=VARCHAR} and answer = #{answer,jdbcType=VARCHAR}
+    </select>
+
+
 </mapper>

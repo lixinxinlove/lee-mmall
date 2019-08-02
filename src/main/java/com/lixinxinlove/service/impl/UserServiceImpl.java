@@ -68,4 +68,17 @@ public class UserServiceImpl implements IUserService {
         return ServerResponse.createBySuccess("注册成功");
 
     }
+
+    @Override
+    public ServerResponse<String> checkValid(String str, String type) {
+        return null;
+    }
+
+    @Override
+    public ServerResponse<String> selectQuestion(String username) {
+        String question = userMapper.selectQuestionByUserName(username);
+        return ServerResponse.createBySuccess(question);
+    }
+
+
 }
