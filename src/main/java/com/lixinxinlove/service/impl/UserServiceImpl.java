@@ -80,5 +80,15 @@ public class UserServiceImpl implements IUserService {
         return ServerResponse.createBySuccess(question);
     }
 
+    @Override
+    public ServerResponse checkAdminRole(User user) {
+
+        if (user.getRole() == Const.Role.ROLE_ADMIN) {
+            return ServerResponse.createBySuccess();
+        } else {
+            return ServerResponse.createByError();
+        }
+    }
+
 
 }

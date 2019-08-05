@@ -32,9 +32,6 @@ public interface IUserService {
     ServerResponse<String> selectQuestion(String username);
 
 
-
-
-
-
+    ServerResponse checkAdminRole(User user);
 
 }
