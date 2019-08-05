@@ -30,8 +30,9 @@ public class UserController {
      * @param session
      * @return
      */
-    @ResponseBody
+
     @RequestMapping(value = "login", method = RequestMethod.POST)
+    @ResponseBody
     public  ServerResponse<User> login(String username, String password, HttpSession session) {
 
         ServerResponse<User> response = userService.login(username, password);
@@ -39,6 +40,8 @@ public class UserController {
             session.setAttribute(Const.CURRENT_USER, response.getData());
         }
 
+
+        System.out.println(response.toString());
 
         return response;
     }

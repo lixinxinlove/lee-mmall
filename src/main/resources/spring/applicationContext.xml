@@ -59,7 +59,7 @@
         <!-- 指定配置文件位置 -->
         <!--<property name="configLocation" value="classpath:mybatis.xml"/>-->
         <!--配置别名-->
-        <property name="typeAliasesPackage" value="com.lixinxinlove.model"></property>
+        <property name="typeAliasesPackage" value="com.lixinxinlove.pojo"></property>
 
         <!-- 指定需要生成代理的接口所在对应的xml文件 配置加载映射文件 -->
         <property name="mapperLocations" value="classpath:mapping/*.xml"></property>
