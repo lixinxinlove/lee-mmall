@@ -1,6 +1,7 @@
 package com.lixinxinlove.dao;
 
 import com.lixinxinlove.pojo.Product;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -20,5 +21,9 @@ public interface ProductMapper {
     List<Product> selectList();
 
     List<Product> selectByNameAndProductId(String productName,Integer productId);
+
+
+    List<Product> selectByNameAndCategoryIds(@Param("productName")String productName, @Param("categoryIdList")List<Integer> categoryIdList);
+
 
 }

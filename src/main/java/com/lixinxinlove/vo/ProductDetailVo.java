@@ -2,31 +2,24 @@ package com.lixinxinlove.vo;
 
 import java.math.BigDecimal;
 
-public class ProductListVO {
+public class ProductDetailVo {
+
+    private Integer  id;
+    private Integer categoryId;
+    private String name;
+    private String subtitle;
+    private String mainImage;
+    private String subImages;
+    private String detail;
+    private BigDecimal price;
+    private Integer stock;
+    private Integer status;
+    private String createTime;
+    private String updateTime;
 
 
     private String imageHost;
-
-
-    private Integer id;
-
-    private Integer categoryId;
-
-    private String name;
-
-    private String subtitle;
-
-    private String mainImage;
-
-    private String subImages;
-
-    private String detail;
-
-    private BigDecimal price;
-
-    private Integer stock;
-
-    private Integer status;
+    private Integer parentCategoryId;
 
     public Integer getId() {
         return id;
@@ -108,11 +101,35 @@ public class ProductListVO {
         this.status = status;
     }
 
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
+    }
+
     public String getImageHost() {
         return imageHost;
     }
 
     public void setImageHost(String imageHost) {
         this.imageHost = imageHost;
+    }
+
+    public Integer getParentCategoryId() {
+        return parentCategoryId;
+    }
+
+    public void setParentCategoryId(Integer parentCategoryId) {
+        this.parentCategoryId = parentCategoryId;
     }
 }

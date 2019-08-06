@@ -1,28 +1,22 @@
 package com.lixinxinlove.controller.backend;
 
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.lixinxinlove.common.Const;
 import com.lixinxinlove.common.ResponseCode;
 import com.lixinxinlove.common.ServerResponse;
-import com.lixinxinlove.dao.ProductMapper;
 import com.lixinxinlove.pojo.Product;
 import com.lixinxinlove.pojo.User;
 import com.lixinxinlove.service.IProductService;
 import com.lixinxinlove.service.IUserService;
-import com.lixinxinlove.vo.ProductListVO;
-import jdk.nashorn.internal.ir.RuntimeNode;
-import org.apache.ibatis.annotations.Arg;
-import org.springframework.asm.SpringAsmInfo;
+import com.lixinxinlove.service.impl.FileServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping("manage/product")
@@ -35,6 +29,8 @@ public class ProductManageController {
     @Autowired
     private IProductService iProductService;
 
+    @Autowired
+    private FileServiceImpl fileService;
 
     @RequestMapping("save")
     public ServerResponse productSave(HttpSession session, Product product) {
@@ -72,5 +68,15 @@ public class ProductManageController {
         return iProductService.selectByNameAndProductId(productName, productId, pageNum, pageSize);
 
     }
+
+
+    //图片上传
+    @RequestMapping("upload")
+    public ServerResponse upload(MultipartFile file, HttpServletRequest request) {
+        String path = request.getSession().getServletContext().getRealPath("upload");
+        String fileName = fileService.upload(file, path);
+        return ServerResponse.createBySuccess(fileName);
+    }
+
 
 }

@@ -21,4 +21,7 @@ public interface CategoryMapper {
     List<Category> selectByParentId(Integer parentId);
 
     List<Integer> selectChrenIds(Integer categoryId);
+
+
+    List<Category> selectCategoryChildrenByParentId(Integer parentId);
 }
