@@ -8,4 +8,8 @@ public interface IProductService {
 
     ServerResponse saveOrUpdateProduct(Product product);
 
+    ServerResponse getList(int pageNum, int pageSize);
+
+    ServerResponse selectByNameAndProductId(String name, Integer id,Integer pageNum, Integer pageSize);
+
 }
