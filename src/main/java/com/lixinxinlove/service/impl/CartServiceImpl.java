@@ -34,6 +34,9 @@ public class CartServiceImpl implements ICartService {
 
     @Override
     public ServerResponse add(Integer userId, Integer productId, Integer count) {
+        if(productId == null || count == null){
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.ILLEGAL_ARGUMENT.getCode(),ResponseCode.ILLEGAL_ARGUMENT.getDesc());
+        }
 
         Cart cart = cartMapper.selectCartByUserIdProductId(userId, productId);
         if (cart == null) {
@@ -48,7 +51,7 @@ public class CartServiceImpl implements ICartService {
             cart.setQuantity(count);
             cartMapper.updateByPrimaryKeySelective(cart);
         }
-        return null;
+        return this.list(userId);
     }
 
 
